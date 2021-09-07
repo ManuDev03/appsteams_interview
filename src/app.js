@@ -1,6 +1,18 @@
 const express = require('express')
 const app = express()
-const port = process.env.port || 3000
+const path = require('path')
+const dotenv = require('dotenv')
+const morganLogger = require('./middleware/logger')
+
+
+
+//configuration
+dotenv.config({path:path.resolve(process.cwd(),"src/config/.env")})
+const port = process.env.PORT || 3000
+
+//middleware
+app.use(morganLogger)
+app.use(express.json())
 
 app.post('/api/books', (req, res) => {
     res.status(200).json({message: "book is added to records"})
