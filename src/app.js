@@ -7,7 +7,7 @@ const bookRouter = require('./routers/book.Router')
 require('./db/mongoose')
 
 // Set Templating Engine
-app.set('view engine', 'ejs')
+// app.set('view engine', 'ejs')
 
 //configuration
 dotenv.config({path:path.resolve(process.cwd(),"src/config/.env")})
@@ -18,9 +18,9 @@ app.use(morganLogger)
 app.use(express.json())
 app.use('/api', bookRouter);
 
-app.get('',(req,res)=>{
-    res.render('index')
-})
+// app.get('',(req,res)=>{
+//     res.render('index')
+// })
 
 app.listen(port, () => {
     console.log('server is runing on port' + port);
